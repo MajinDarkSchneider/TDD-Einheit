@@ -37,5 +37,4 @@ class PlayerCharacter{
     public static void moveD(){
         setX(getX()+1);
     }
-
 }
