@@ -1,48 +1,39 @@
 package org.example;
 
-public class PlayerCharacter {
-    int[] position = {0,0};
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+        // to see how IntelliJ IDEA suggests fixing it.
 
-    // Getter & Setter
-    public int getX() {
-        return this.position[0];
     }
 
-    public void setX(int x) {
-        this.position[0] = x;
+    public static int add(int a, int b) {
+        return a + b;
     }
 
-    public int getY() {
-        return this.position[1];
+    public static boolean isEven(int number){
+        return number % 2 == 0;
     }
 
-    public void setY(int y) {
-        this.position[1] = y;
+    public static int multiply(int a , int b){
+        return a * b;
     }
 
-    public int[] getPosition() {
-        return this.position;
+    public  static String stringToUppercase(String text){
+        return text.toUpperCase();
     }
 
-    // Move the character
-    public int[] moveW(){
-        position[0]++;
-        return this.position;
+    public static boolean isPositive(int num){
+        return num > 0;
     }
 
-    public int[] moveS(){
-        position[0]--;
-        return this.position;
-    }
-
-    public int[] moveA(){
-        position[1]--;
-        return position;
-    }
-
-    public int[] moveD(){
-        position[1]++;
-        return position;
+    public static String fizzBuzz(int num){
+        if(num % 3 == 0 && num % 5 == 0)return "FizzBuzz";
+        if(num % 5 == 0) return "Buzz";
+        if(num % 3 == 0) return "Fizz";
+        return "" + num;
     }
 
 }

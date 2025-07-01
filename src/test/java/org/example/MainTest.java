@@ -5,75 +5,73 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MainTest {
+class PlayerCharacterTest {
+    private PlayerCharacter player;
+
     @BeforeEach
-    void unset(){
-        PlayerCharacter.setX(0);
-        PlayerCharacter.setY(0);
+    void setUp() {
+        player = new PlayerCharacter();
+        player.setX(0);
+        player.setY(0);
     }
-    @Test
-    void getX(){
-        //GIVEN
 
-        //WHEN
-        int valueX = PlayerCharacter.getX();
-        //THEN
-        assertEquals(valueX, 0);
-    }
-    @Test
-    void getY(){
-        //GIVEN
 
-        //WHEN
-        int valueY = PlayerCharacter.getY();
-        //THEN
-        assertEquals(valueY, 0);
+    @Test
+    void getX_shouldReturn0(){
+        assertEquals(0, player.getX());
     }
 
     @Test
-    void moveW(){
-        //Given
-        int[] position = {PlayerCharacter.getX(),PlayerCharacter.getY()};
-        //WHEN
-        PlayerCharacter.moveW();
-        //THEN
-        assertEquals(1,PlayerCharacter.getY());
+    void getY_shouldReturn0(){
+        assertEquals(0, player.getY());
     }
+
     @Test
-    void moveA(){
-        //Given
-        int[] position = {PlayerCharacter.getX(),PlayerCharacter.getY()};
-        //WHEN
-        PlayerCharacter.moveA();
-        //THEN
-        assertEquals(-1,PlayerCharacter.getX());
+    void moveW_shouldReturn01(){
+        int[] expected = {1,0};
+        assertArrayEquals(expected, player.moveW());
     }
+
     @Test
-    void moveS(){
-        //Given
-        int[] position = {PlayerCharacter.getX(),PlayerCharacter.getY()};
-        //WHEN
-        PlayerCharacter.moveS();
-        //THEN
-        assertEquals(-1,PlayerCharacter.getY());
+    void moveS_shouldReturn0minus1(){
+        int[] expected = {-1,0};
+        assertArrayEquals(expected, player.moveS());
     }
+
     @Test
-    void moveD(){
-        //Given
-        int[] position = {PlayerCharacter.getX(),PlayerCharacter.getY()};
-        //WHEN
-        PlayerCharacter.moveD();
-        //THEN
-        assertEquals(1,PlayerCharacter.getX());
+    void moveA_shouldReturnMinus10(){
+        int[] expected = {0,-1};
+        assertArrayEquals(expected, player.moveA());
     }
+
     @Test
-    void moveADouble(){
-        //Given
-        int[] position = {PlayerCharacter.getX(),PlayerCharacter.getY()};
-        //WHEN
-        PlayerCharacter.moveA();
-        PlayerCharacter.moveA();
-        //THEN
-        assertEquals(-2,PlayerCharacter.getX());
+    void moveD_shouldReturn1and0(){
+        int[] expected = {0,1};
+        assertArrayEquals(expected, player.moveD());
     }
+
+    @Test
+    void moveTest_shouldReturn1and0(){
+        int[] expected = {0,1};
+        assertArrayEquals(expected, player.moveD());
+    }
+
+    @Test
+    void moveAround_shouldGoUpAndRight(){
+        int[] expected = {1,1};
+        player.moveW();
+        player.moveD();
+        assertArrayEquals(expected, player.getPosition());
+    }
+
+    @Test
+    void moveAround_shouldGoLeftLeftDownAndRight(){
+        int[] expected = {-1,-1};
+        player.moveA();
+        player.moveA();
+        player.moveS();
+        player.moveD();
+        assertArrayEquals(expected, player.getPosition());
+    }
+
 }

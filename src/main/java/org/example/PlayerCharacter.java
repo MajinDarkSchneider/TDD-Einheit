@@ -1,3 +1,6 @@
+package org.example;
+
+
 public class PlayerCharacter {
     int[] position = {0,0};
 
