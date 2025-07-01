@@ -6,24 +6,24 @@ import org.w3c.dom.ls.LSOutput;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
+        System.out.println();
     }
 }
-class PlayerCharacter{
-    static int[] position = {0,0};
+public class PlayerCharacter{
+    int[] position = {0,0};
     public static void main(String[] args) {
     }
     public static int getX(){
-        return position[0];
+        return this.position[0];
     }
     public static int getY(){
-        return position[1];
+        return this.position[1];
     }
     public static void setX(int newValue){
-        position[0] = newValue;
+        this.position[0] = newValue;
     }
     public static void setY(int newValue){
-        position[1] = newValue;
+        this.position[1] = newValue;
     }
     public static void moveW(){
         setY(getY()+1);
