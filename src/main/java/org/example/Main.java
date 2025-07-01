@@ -10,7 +10,7 @@ public class Main {
     }
 
     public static int add(int a, int b) {
-        return a + a;
+        return a + b;
     }
 
     public static boolean isEven(int number){
