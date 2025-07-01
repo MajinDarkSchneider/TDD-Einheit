@@ -1,39 +1,72 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+class PlayerCharacterTest {
+    private PlayerCharacter player;
+
+    @BeforeEach
+    void setUp() {
+        player = new PlayerCharacter();
+        player.setX(0);
+        player.setY(0);
     }
 
-    public static int add(int a, int b) {
-        return a + a;
+
+    @Test
+    void getX_shouldReturn0(){
+        assertEquals(0, player.getX());
     }
 
-    public static boolean isEven(int number){
-        return number % 2 == 0;
+    @Test
+    void getY_shouldReturn0(){
+        assertEquals(0, player.getY());
     }
 
-    public static int multiply(int a , int b){
-        return a * b;
+    @Test
+    void moveW_shouldReturn01(){
+        int[] expected = {1,0};
+        assertArrayEquals(expected, player.moveW());
     }
 
-    public  static String stringToUppercase(String text){
-        return text.toUpperCase();
+    @Test
+    void moveS_shouldReturn0minus1(){
+        int[] expected = {-1,0};
+        assertArrayEquals(expected, player.moveS());
     }
 
-    public static boolean isPositive(int num){
-        return num > 0;
+    @Test
+    void moveA_shouldReturnMinus10(){
+        int[] expected = {0,-1};
+        assertArrayEquals(expected, player.moveA());
     }
 
-    public static String fizzBuzz(int num){
-        if(num % 3 == 0 && num % 5 == 0)return "FizzBuzz";
-        if(num % 5 == 0) return "Buzz";
-        if(num % 3 == 0) return "Fizz";
-        return "" + num;
+    @Test
+    void moveD_shouldReturn1and0(){
+        int[] expected = {0,1};
+        assertArrayEquals(expected, player.moveD());
+    }
+
+
+    @Test
+    void moveAround_shouldGoUpAndRight(){
+        int[] expected = {1,1};
+        player.moveW();
+        player.moveD();
+        assertArrayEquals(expected, player.getPosition());
+    }
+
+    @Test
+    void moveAround_shouldGoLeftLeftDownAndRight(){
+        int[] expected = {-1,-1};
+        player.moveA();
+        player.moveA();
+        player.moveS();
+        player.moveD();
+        assertArrayEquals(expected, player.getPosition());
     }
 
 }
